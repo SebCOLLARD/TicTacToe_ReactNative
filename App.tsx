@@ -11,9 +11,7 @@ export default class App extends React.Component {
             <StatusBar style="auto" />
 
             <View style={styles.rowTile}>
-                <View style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#000" }]}>
-                    <Icon name="close-outline" style={styles.tileX} />
-                </View>
+                <View style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0 }]}></View>
                 <View style={[styles.tile, { borderTopWidth: 0 }]}></View>
                 <View style={[styles.tile, { borderRightWidth: 0, borderTopWidth: 0 }]}></View>
             </View>
@@ -50,12 +48,5 @@ const styles = StyleSheet.create({
     },
     rowTile: {
         flexDirection: "row"
-    },
-    tileX: {
-        color: "red",
-        fontSize: 60,
-        flex: 1,
-        // alignItems: "center",
-        // justifyContent: "center"
     }
 });
