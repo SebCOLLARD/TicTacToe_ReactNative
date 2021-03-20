@@ -24,6 +24,7 @@ export default class App extends React.Component {
             [0, 0, 0]
         ];
         this.setState({ gameBoard: board });
+        this.setState({ currentPlayer: 1 })
     }
 
     renderIcon(row:number, col:number) {
