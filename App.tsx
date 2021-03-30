@@ -60,7 +60,6 @@ export default class App extends React.Component {
     }
 
     winChecker():number {
-        // console.log("JE SUIS LE WIN CHECKER");
         var board = this.state.gameBoard;
 
         var rowSum:number = 0;

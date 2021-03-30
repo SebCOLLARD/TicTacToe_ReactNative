@@ -90,7 +90,7 @@ function minimax(board, depth:number, maximazing:boolean):number {
     }
 }
 
-function bestMove(board) {
+export default function bestMove(board) {
     var bestscore:number = -Infinity;
     var move = {};
 
@@ -98,7 +98,7 @@ function bestMove(board) {
         for (var j:number = 0; j < 3; j++) {
             if (board[i][j] == 0) {
                 board[i][j] = ai;
-                var score:number = minimax(board, 3, true);
+                var score:number = minimax(board, 3, false);
                 board[i][j] = 0;
                 if (score > bestscore) {
                     bestscore = score;
@@ -110,5 +110,3 @@ function bestMove(board) {
     console.log("CORD AI :::::::::::::: I = ", move.i, " J = ", move.j);
     board[move.i][move.j] = ai;
 }
-
-export default bestMove;
