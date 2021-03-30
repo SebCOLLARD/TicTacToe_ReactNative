@@ -105,8 +105,10 @@ export default class App extends React.Component {
         <View style={styles.container}>
             <StatusBar style="auto" />
 
+            <Text style={styles.title}>Tic Tac Toe</Text>
+
             <View style={styles.rowTile}>
-                <TouchableOpacity onPress={() => this.onPressTile(0, 0)} style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#000" }]}>
+                <TouchableOpacity onPress={() => this.onPressTile(0, 0)} style={[styles.tile, { borderLeftWidth: 0, borderTopWidth: 0}]}>
                     { this.renderIcon(0,0) }
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.onPressTile(0, 1)} style={[styles.tile, { borderTopWidth: 0 }]}>
@@ -141,7 +143,9 @@ export default class App extends React.Component {
                 </TouchableOpacity>
             </View>
 
-            <Text></Text>
+            <TouchableOpacity style={styles.resetBtn} onPress={() => this.initGame()}>
+                <Text>Reset Game</Text>
+            </TouchableOpacity>
 
         </View>
         );
@@ -175,5 +179,21 @@ const styles = StyleSheet.create({
     tileO: {
         color: "green",
         fontSize: 60,
-    }
+    },
+    title: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        margin: 10,
+        marginBottom: 100
+    },
+    resetBtn: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#fff",
+        height: 40,
+        width: 220,
+        marginTop: 100,
+        borderWidth: 5
+    },
 });
