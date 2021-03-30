@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons as Icon } from 'react-native-vector-icons';
+import bestMove from './ai/minimax.ts';
 
 export default class App extends React.Component {
 
@@ -38,22 +39,23 @@ export default class App extends React.Component {
     }
 
     onPressTile(row:number, col:number) {
-        // console.log("ROW ::: ", row)
-        // console.log("COL ::: ", col)
-
         var board = this.state.gameBoard;
         if (board[row][col] == 0) {
             board[row][col] = this.state.currentPlayer;
             this.setState({ gmaeBoard: board });
-            this.setState({ currentPlayer: this.state.currentPlayer * -1 });
-        }
-        var win:number = this.winChecker();
-        if (win == 1) {
-            alert("Player X is the winner !");
-            this.initGame();
-        } else if (win == -1) {
-            alert("Player O is the winner !");
-            this.initGame();
+            var win:number = this.winChecker();
+            if (win == 1 || win == -1) {
+                win == 1 ? alert("Player X is the winner !") : alert("Player O is the winner !");
+                this.initGame();
+                return;
+            }
+            bestMove(this.state.gameBoard);
+            win = this.winChecker();
+            if (win == 1 || win == -1) {
+                win == 1 ? alert("Player X is the winner !") : alert("Player O is the winner !");
+                this.initGame();
+                return;
+            }
         }
     }
 
