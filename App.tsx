@@ -48,6 +48,10 @@ export default class App extends React.Component {
                 win == 1 ? alert("Player X is the winner !") : alert("Player O is the winner !");
                 this.initGame();
                 return;
+            } else if (this.tieChecker()) {
+                alert("GG !!");
+                this.initGame();
+                return;
             }
             bestMove(this.state.gameBoard);
             win = this.winChecker();
@@ -55,8 +59,27 @@ export default class App extends React.Component {
                 win == 1 ? alert("Player X is the winner !") : alert("Player O is the winner !");
                 this.initGame();
                 return;
+            } else if (this.tieChecker()) {
+                alert("It's a tie !");
+                this.initGame();
+                return;
             }
         }
+    }
+
+    tieChecker():boolean {
+        var sum:number = 0;
+
+        for (var i:number = 0; i < 3; i++) {
+            for (var j:number = 0; j < 3; j++) {
+                if (this.state.gameBoard[i][j] == 1 || this.state.gameBoard[i][j] == -1)
+                    sum++;
+            }
+        }
+        if (sum == 9)
+            return true;
+
+        return false;
     }
 
     winChecker():number {

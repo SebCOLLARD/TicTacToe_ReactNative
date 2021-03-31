@@ -107,6 +107,8 @@ export default function bestMove(board) {
             }
         }
     }
-    console.log("CORD AI :::::::::::::: I = ", move.i, " J = ", move.j);
-    board[move.i][move.j] = ai;
+    if (move.i !== undefined || move.j !== undefined) {
+        console.log("CORD AI :::::::::::::: I = ", move.i, " J = ", move.j);
+        board[move.i][move.j] = ai;
+    }
 }
